@@ -1,3 +1,5 @@
+package util;
+
 public class IdUtil {
     public static String nextStudentId(int currentCount) {
         int next = currentCount + 1;
