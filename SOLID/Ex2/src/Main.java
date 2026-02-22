@@ -1,19 +1,35 @@
-import java.util.*;
+import entities.OrderLine;
+import printer.ConsolePrinter;
+import printer.InvoiceFormatter;
+import repository.InMemoryInvoiceRepository;
+import services.*;
+import util.MenuLoader;
+
+import java.util.List;
+import java.util.Map;
+import entities.MenuItem;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== Cafeteria Billing ===");
 
-        CafeteriaSystem sys = new CafeteriaSystem();
-        sys.addToMenu(new MenuItem("M1", "Veg Thali", 80.00));
-        sys.addToMenu(new MenuItem("C1", "Coffee", 30.00));
-        sys.addToMenu(new MenuItem("S1", "Sandwich", 60.00));
+        Map<String, MenuItem> menu = MenuLoader.load();
+
+        // Student order
+        TaxRule studentTax = new StudentTaxRule();
+        DiscountRule studentDiscount = new StudentDiscountRule();
+        BillingService billing = new BillingService(menu, studentTax, studentDiscount);
+        CafeteriaSystem sys = new CafeteriaSystem(
+                menu, billing,
+                new InvoiceFormatter(),
+                new ConsolePrinter(),
+                new InMemoryInvoiceRepository()
+        );
 
         List<OrderLine> order = List.of(
                 new OrderLine("M1", 2),
                 new OrderLine("C1", 1)
         );
-
-        sys.checkout("student", order);
+        sys.checkout(order);
     }
 }
