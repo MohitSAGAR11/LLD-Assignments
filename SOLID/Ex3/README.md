@@ -4,16 +4,16 @@
 Placement eligibility depends on multiple rules: CGR threshold, attendance percentage, earned credits, and disciplinary flags. More rules will be added later.
 
 ## 2. Current behavior
-- Evaluates a `StudentProfile`
+- Evaluates a `entities.StudentProfile`
 - Returns ELIGIBLE or NOT_ELIGIBLE with reasons
 - Prints a report
 
 ## 3. What’s wrong with the design (at least 5 issues)
-1. `EligibilityEngine.evaluate` is a long if/else chain with mixed responsibilities.
+1. `services.EligibilityEngine.evaluate` is a long if/else chain with mixed responsibilities.
 2. Adding a new rule requires editing the same method (risk of regressions).
 3. Rule configuration is hard-coded.
 4. Reasons formatting is mixed with evaluation.
-5. Engine does persistence-ish logging via `FakeEligibilityStore`.
+5. Engine does persistence-ish logging via `repository.FakeEligibilityStore`.
 6. Type/flag logic is scattered.
 
 ## 4. Your task
@@ -23,7 +23,7 @@ Checkpoint C: Make it possible to add a new rule without editing the main evalua
 Checkpoint D: Keep report text identical.
 
 ## 5. Constraints
-- Keep `StudentProfile` fields unchanged.
+- Keep `entities.StudentProfile` fields unchanged.
 - Preserve order of reasons in output.
 - No external libraries.
 

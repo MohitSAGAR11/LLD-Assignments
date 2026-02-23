@@ -1,3 +1,5 @@
+package enums;
+
 public class LegacyFlags {
     public static final int NONE = 0;
     public static final int WARNING = 1;
