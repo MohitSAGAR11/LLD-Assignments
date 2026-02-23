@@ -1,4 +1,8 @@
-import java.util.*;
+package printer;
+
+import dto.BookingRequest;
+import entities.Money;
+import enums.LegacyRoomTypes;
 
 public class ReceiptPrinter {
     public static void print(BookingRequest req, Money monthly, Money deposit) {

@@ -1,3 +1,5 @@
+package enums;
+
 public class LegacyRoomTypes {
     public static final int SINGLE = 1;
     public static final int DOUBLE = 2;
