@@ -1,3 +1,5 @@
+package dto;
+
 public class ExportRequest {
     public final String title;
     public final String body;
