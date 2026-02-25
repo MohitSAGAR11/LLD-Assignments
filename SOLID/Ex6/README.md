@@ -1,13 +1,13 @@
-# Ex6 — LSP: Notification Sender Inheritance
+# Ex6 — LSP: entities.Notification Sender Inheritance
 
 ## 1. Context
 A campus system sends notifications via email, SMS, and WhatsApp.
 
 ## 2. Current behavior
-- `NotificationSender.send(Notification)` is the base method
-- `EmailSender` silently truncates messages (changes meaning)
-- `WhatsAppSender` rejects non-E.164 numbers (tightens precondition)
-- `SmsSender` ignores subject but base type implies subject may be used
+- `service.NotificationSender.send(entities.Notification)` is the base method
+- `service.EmailSender` silently truncates messages (changes meaning)
+- `service.WhatsAppSender` rejects non-E.164 numbers (tightens precondition)
+- `service.SmsSender` ignores subject but base type implies subject may be used
 
 ## 3. What’s wrong (at least 5 issues)
 1. Subtypes impose extra constraints not present in base contract.
@@ -17,7 +17,7 @@ A campus system sends notifications via email, SMS, and WhatsApp.
 5. Contract is vague and untested; inheritance is misused.
 
 ## 4. Your task
-- Make substitutability true: if code works with `NotificationSender`, it should work with any sender.
+- Make substitutability true: if code works with `service.NotificationSender`, it should work with any sender.
 - Preserve current outputs for the sample inputs in `Main`.
 
 ## 5. Constraints
@@ -37,7 +37,7 @@ java Main
 
 ## 8. Sample output
 ```text
-=== Notification Demo ===
+=== entities.Notification Demo ===
 EMAIL -> to=riya@sst.edu subject=Welcome body=Hello and welcome to SST!
 SMS -> to=9876543210 body=Hello and welcome to SST!
 WA ERROR: phone must start with + and country code

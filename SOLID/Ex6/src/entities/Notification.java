@@ -1,3 +1,5 @@
+package entities;
+
 public class Notification {
     public final String subject;
     public final String body;
