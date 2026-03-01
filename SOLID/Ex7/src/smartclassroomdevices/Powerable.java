@@ -1,0 +1,6 @@
+package smartclassroomdevices;
+
+public interface Powerable {
+    void powerOn();
+    void powerOff();
+}
