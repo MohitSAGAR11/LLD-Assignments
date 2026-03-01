@@ -1,3 +1,5 @@
+package utils;
+
 public class BudgetLedger {
     private double balance = 0.0;
     public void add(double amt, String note) {
