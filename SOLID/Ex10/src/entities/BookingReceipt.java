@@ -1,3 +1,5 @@
+package entities;
+
 public class BookingReceipt {
     public final String id;
     public final double fare;

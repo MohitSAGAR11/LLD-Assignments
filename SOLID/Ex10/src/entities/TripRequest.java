@@ -1,3 +1,5 @@
+package entities;
+
 public class TripRequest {
     public final String studentId;
     public final GeoPoint from;

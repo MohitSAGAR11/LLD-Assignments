@@ -1,4 +1,8 @@
-public class DistanceCalculator {
+package utils;
+
+import entities.GeoPoint;
+
+public class DistanceCalculator implements InDistanceCalculator {
     public double km(GeoPoint a, GeoPoint b) {
         // fake distance: rough Manhattan on scaled degrees for determinism
         double d = Math.abs(a.lat - b.lat) + Math.abs(a.lon - b.lon);

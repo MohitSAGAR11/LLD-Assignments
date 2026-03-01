@@ -1,3 +1,5 @@
+package entities;
+
 public class GeoPoint {
     public final double lat;
     public final double lon;
