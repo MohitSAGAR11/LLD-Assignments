@@ -14,7 +14,7 @@ You are building a simple onboarding flow for new students. The system accepts a
 1. `OnboardingService` mixes parsing, validation, ID generation, persistence, and printing.
 2. Hard-coded program rules inside the same method as IO/printing.
 3. Validation errors are printed directly instead of being represented cleanly.
-4. Persistence is coupled to a specific `FakeDb` and direct calls.
+4. Persistence is coupled to a specific `repository.impl.FakeDb` and direct calls.
 5. Output formatting is mixed with business logic, making changes risky.
 6. Utility logic is scattered (some in `IdUtil`, some inline).
 7. Hard to unit test because everything runs inside one “do-it-all” method.
@@ -34,7 +34,7 @@ Checkpoint C:
 
 Checkpoint D:
 - Decouple persistence from the onboarding flow (introduce an interface for saving).
-- Keep `FakeDb` as an implementation.
+- Keep `repository.impl.FakeDb` as an implementation.
 
 Checkpoint E:
 - Extract printing/formatting responsibilities away from the onboarding workflow.
@@ -42,13 +42,13 @@ Checkpoint E:
 
 ## 5. Constraints
 - Keep `Main` output exactly the same.
-- Keep `StudentRecord` fields and `toString()` unchanged.
+- Keep `entities.StudentRecord` fields and `toString()` unchanged.
 - No external libraries.
 - Default package only.
 
 ## 6. Acceptance criteria
 - Program output is unchanged.
-- `OnboardingService` no longer directly formats output and no longer directly knows `FakeDb`.
+- `OnboardingService` no longer directly formats output and no longer directly knows `repository.impl.FakeDb`.
 - Validation rules are testable without console IO.
 - Adding a new field (e.g., `city`) should not require editing a “god method”.
 
@@ -66,7 +66,7 @@ INPUT: name=Riya;email=riya@sst.edu;phone=9876543210;program=CSE
 OK: created student SST-2026-0001
 Saved. Total students: 1
 CONFIRMATION:
-StudentRecord{id='SST-2026-0001', name='Riya', email='riya@sst.edu', phone='9876543210', program='CSE'}
+entities.StudentRecord{id='SST-2026-0001', name='Riya', email='riya@sst.edu', phone='9876543210', program='CSE'}
 
 -- DB DUMP --
 | ID             | NAME | PROGRAM |

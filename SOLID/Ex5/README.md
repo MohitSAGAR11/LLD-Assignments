@@ -1,20 +1,20 @@
-# Ex5 — LSP: File Exporter Hierarchy
+# Ex5 — LSP: File exporter.Exporter Hierarchy
 
 ## 1. Context
 A reporting tool exports student performance data to multiple formats.
 
 ## 2. Current behavior
-- `Exporter` has `export(ExportRequest)` that returns `ExportResult`
-- `PdfExporter` throws for large content (tightens preconditions)
-- `CsvExporter` silently changes meaning by dropping newlines and commas poorly
-- `JsonExporter` returns empty on null (inconsistent contract)
+- `exporter.Exporter` has `export(dto.ExportRequest)` that returns `dto.ExportResult`
+- `exporter.PdfExporter` throws for large content (tightens preconditions)
+- `exporter.CsvExporter` silently changes meaning by dropping newlines and commas poorly
+- `exporter.JsonExporter` returns empty on null (inconsistent contract)
 - `Main` demonstrates current behavior
 
 ## 3. What’s wrong (at least 5 issues)
-1. Subclasses violate expectations of the base `Exporter` contract.
-2. `PdfExporter` throws for valid requests (from base perspective).
-3. `CsvExporter` changes semantics of fields (data corruption risk).
-4. `JsonExporter` handles null differently than others.
+1. Subclasses violate expectations of the base `exporter.Exporter` contract.
+2. `exporter.PdfExporter` throws for valid requests (from base perspective).
+3. `exporter.CsvExporter` changes semantics of fields (data corruption risk).
+4. `exporter.JsonExporter` handles null differently than others.
 5. Callers cannot rely on substitutability; they need format-specific workarounds.
 6. Contract is not documented; behavior surprises are runtime.
 

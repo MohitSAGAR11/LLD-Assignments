@@ -1,3 +1,10 @@
+import controller.ClassroomController;
+import deviceRegistry.DeviceRegistry;
+import smartclassroomdevices.AirConditioner;
+import smartclassroomdevices.AttendanceScanner;
+import smartclassroomdevices.LightsPanel;
+import smartclassroomdevices.Projector;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== Smart Classroom ===");

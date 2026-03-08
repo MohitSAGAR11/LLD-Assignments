@@ -1,12 +1,18 @@
+import entities.Notification;
+import service.EmailSender;
+import service.NotificationSender;
+import service.WhatsAppSender;
+import store.AuditLog;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== Notification Demo ===");
+        System.out.println("=== entities.Notification Demo ===");
         AuditLog audit = new AuditLog();
 
-        Notification n = new Notification("Welcome", "Hello and welcome to SST!", "riya@sst.edu", "9876543210");
+        Notification n = new Notification("Welcome", "Hello and welcome to SST!", "riya@sst.edu", "+9876543210");
 
         NotificationSender email = new EmailSender(audit);
-        NotificationSender sms = new SmsSender(audit);
+        NotificationSender sms = new service.impl.SmsSender(audit);
         NotificationSender wa = new WhatsAppSender(audit);
 
         email.send(n);

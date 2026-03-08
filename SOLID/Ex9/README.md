@@ -4,7 +4,7 @@
 An evaluation pipeline checks submissions using a rubric, runs plagiarism checks, grades code, and writes a report.
 
 ## 2. Current behavior
-- `EvaluationPipeline.evaluate` directly instantiates concrete graders/checkers/writers with `new`
+- `evaluation.EvaluationPipeline.evaluate` directly instantiates concrete graders/checkers/writers with `new`
 - Prints a final summary line and “writes” a report
 
 ## 3. What’s wrong (at least 5 issues)
@@ -22,7 +22,7 @@ Checkpoint D: Keep output identical.
 
 ## 5. Constraints
 - Preserve output and line order.
-- Keep `Submission` fields unchanged.
+- Keep `entities.Submission` fields unchanged.
 - No external libraries.
 
 ## 6. Acceptance criteria

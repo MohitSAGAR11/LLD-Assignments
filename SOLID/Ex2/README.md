@@ -10,7 +10,7 @@ A cafeteria billing console generates invoices for student orders. It currently 
 - Prints an invoice and writes it to a file-like store (in-memory)
 
 ## 3. What’s wrong with the design (at least 5 issues)
-1. `CafeteriaSystem.checkout` mixes menu lookup, pricing, tax rules, discount rules, printing, and persistence.
+1. `services.CafeteriaSystem.checkout` mixes menu lookup, pricing, tax rules, discount rules, printing, and persistence.
 2. Tax rules are hard-coded and not extensible.
 3. Discounts are hard-coded with ad-hoc conditions.
 4. Invoice formatting is mixed with money calculations.
@@ -20,17 +20,17 @@ A cafeteria billing console generates invoices for student orders. It currently 
 ## 4. Your task (refactor plan)
 Checkpoint A: Run and capture output.
 Checkpoint B: Separate pricing/tax/discount computations into dedicated components.
-Checkpoint C: Move invoice formatting out of `CafeteriaSystem`.
+Checkpoint C: Move invoice formatting out of `services.CafeteriaSystem`.
 Checkpoint D: Introduce small abstractions to decouple persistence and rules.
 Checkpoint E: Keep output identical.
 
 ## 5. Constraints
 - Preserve exact invoice text and line order.
-- Keep `MenuItem` and `OrderLine` public fields unchanged.
+- Keep `entities.MenuItem` and `entities.OrderLine` public fields unchanged.
 - No external libraries.
 
 ## 6. Acceptance criteria
-- `CafeteriaSystem` orchestrates only; it should not format strings or encode tax/discount specifics.
+- `services.CafeteriaSystem` orchestrates only; it should not format strings or encode tax/discount specifics.
 - Adding a new discount should not require editing a long method.
 
 ## 7. How to run

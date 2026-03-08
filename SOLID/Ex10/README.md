@@ -4,7 +4,7 @@
 A campus transport service books rides for students. It calculates distance, allocates a driver, and charges payment.
 
 ## 2. Current behavior
-- `TransportBookingService.book` directly creates concrete `PaymentGateway`, `DriverAllocator`, `DistanceCalculator`
+- `service.TransportBookingService.book` directly creates concrete `utils.PaymentGateway`, `utils.DriverAllocator`, `utils.DistanceCalculator`
 - Prints receipt
 
 ## 3. What’s wrong (at least 5 issues)
@@ -20,7 +20,7 @@ A campus transport service books rides for students. It calculates distance, all
 
 ## 5. Constraints
 - Preserve receipt output format.
-- Keep `TripRequest` fields unchanged.
+- Keep `entities.TripRequest` fields unchanged.
 - No external libs.
 
 ## 6. Acceptance criteria

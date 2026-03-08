@@ -4,7 +4,7 @@
 A smart classroom controller manages devices: projector, lights, AC, attendance scanner.
 
 ## 2. Current behavior
-- There is one large interface `SmartClassroomDevice` containing many methods
+- There is one large interface `smartclassroomdevices.SmartClassroomDevice` containing many methods
 - Each device implements methods it does not need using dummy logic
 - Controller calls only some methods depending on device type
 
@@ -39,12 +39,12 @@ java Main
 ## 8. Sample output
 ```text
 === Smart Classroom ===
-Projector ON (HDMI-1)
+smartclassroomdevices.Projector ON (HDMI-1)
 Lights set to 60%
 AC set to 24C
 Attendance scanned: present=3
 Shutdown sequence:
-Projector OFF
+smartclassroomdevices.Projector OFF
 Lights OFF
 AC OFF
 ```
